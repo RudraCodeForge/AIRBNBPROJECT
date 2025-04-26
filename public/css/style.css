@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Plaster&family=UnifrakturMaguntia&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+#navbar{
+  background-color:#e33434;
+  position:fixed;
+  top:0;
+  width:100%;
+  display:flex;
+  padding:10px;
+  justify-content: space-between; 
+}
+#logo{
+  display: inline-block;
+  letter-spacing:2px;
+  color:white;
+  font-family: "Plaster", system-ui;
+}
+#link a{
+  font-size:15px;
+  color:white;
+  margin:0 5px;
+  font-family: "Libre Baskerville", serif;
+  text-decoration:none;
+}
+
+#header{
+  letter-spacing:2px;
+  font-family: "Noto Serif", serif;
+  color:white;
+  font-weight:bolder;
+  background-color:#f54949;
+  padding:30px 10px;
+  margin-top:40px;
+}
+#search{
+  margin: 20px 0;
+}
+#search input{
+  padding:10px;
+  width:250px;
+  border-radius:10px;
+  border:none;
+}
+#search input:focus{
+  outline:1px solid #8769ff;
+}
+#search button{
+  border:2px solid white;
+  border-radius: 10px;
+  background-color:#8769ff;
+  color:white;
+  font-weight:400;
+  font-size:15px;
+  width:70px;
+  padding:10px;
+  transition:0.5s ease-in-out;
+}
+#search button:hover{
+  border-radius: 10px 0 10px 0;
+}
+main{
+  padding:20px;
+}
+.HOMES{
+  list-style:none;
+}
+.HOME{
+  background-color:#8769ff;
+  width:100%;
+  padding:20px;
+  border:1px solid black;
+  border-radius: 20px;
+  box-shadow: 5px 5px 10px grey;
+  margin:20px 0;
+}
+.p1{
+  font-family: "Plaster", system-ui;
+  letter-spacing:2px;
+  font-size:25px;
+  color:#f54949;
+  text-align:center;
+}
+.p2,.p3,.p4{
+  font-family: "Libre Baskerville", serif;
+  font-weight: bold;
+  color:white;
+  margin:10px 0;
+}
+.himg{
+  width: 100%;
+  border-radius: 20px 0;
+}
+.MAIN{
+  width:100%;
+  display:flex;
+}
+.LEFT{
+  width:50%;
+  display:inline-block;
+  
+}
+.RIGHT{
+  width:50%;
+  display: inline-block;
+  text-align:right;
+}
+.Bbtn{
+  width:100%;
+  padding:10px;
+  font-family: "Almendra", serif;
+  font-weight:800;
+  letter-spacing:2px;
+  color:white;
+  background-color:#f54949;
+  transition:0.2s ease-in-out;
+}
+
+.Bbtn:hover{
+  color:#f54949;
+  background-color:white;
+  
+}
+.Bbtn:active{
+  transform: scale(0.9);
+}
+footer{
+  background-color:black;
+  font-weight:bold;
+  font-family: "Merienda", cursive;
+  letter-spacing:2px;
+  width:100%;
+  padding:10px;
+  margin-top:20px;
+  text-align:center;
+  bottom:0;
+  color:white;
+}
+
+/*ADDHOME PAGE STYLE START HERE*/
+
+#main{
+  text-align:center;
+  padding:10px;
+}
+#main a{
+  text-decoration:none;
+  font-family: "Noto Serif", serif;
+  color:#f54949;
+  font-size:20px;
+  letter-spacing:2px;
+  font-weight:800;
+  
+}
+#addhome{
+  border:2px solid black;
+  padding:20px;
+  border-radius:20px;
+  background-color:#f54949;
+  margin-bottom:50px;
+}
+#addhome input,button{
+  border:none;
+  padding:10px;
+  width:300px;
+  border-radius: 10px; 
+}
+#addhome input:focus{
+  outline:2px solid #8769ff;
+}
+#addhome button{
+  font-family: "Noto Serif", serif;
+  background-color:#8769ff;
+  color:white;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:2px;
+  border:2px solid white;
+  transition:0.5s ease-in-out;
+}
+#addhome button:hover{
+  background-color:white;
+  color:#8769ff;
+  border-radius:20px;
+}
+#maindata{
+  text-align:center;
+}
+#maindata h1{
+  color:#f54949;
+  margin:20px;
+  font-size:50px;  
+  font-weight:800;
+}
+#maindata p{
+  margin:20px;
+}
+#maindata a{
+  text-decoration:none;
+  color:#8769ff;
+  font-size:20px;
+  font-weight:bold;
+  border:2px solid black;
+  border-radius:10px;
+  padding:10px;
+  transition:0.5s ease-in-out;
+  
+  box-shadow:3px 3px 10px 3px grey;
+  margin-top:40px;
+}
+#maindata a:hover{
+  background-color:#8769ff;
+  color: white;
+  border-radius:20px;
+  transform: scale(0.5);
+}
