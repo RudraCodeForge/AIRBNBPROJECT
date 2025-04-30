@@ -1,21 +1,14 @@
-<%- include('./partial/head') %>
+<%- include('../partial/head') %>
 <body>
     
-    <%- include('./partial/navbar') %>
+    <%- include('../partial/navbar') %>
     <section id="header">
         <h1>
-            WELCOME TO AIRBNB HOME
+            WELCOME TO DETAILS HOME PAGE
         </h1>
-        <div id="search">
-            <input type="text" placeholder="SEARCH FOR HOME">
-            <button>
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-        </div>
     </section>
-    <main>
+        <main>
         <ul>
-           <% REGISTERHOME.forEach(home=>{ %>
            <li class='HOMES'>
                <div class='HOME'>
                     <div class='images'>
@@ -48,15 +41,19 @@
                             </p>
                         </div>
                     </div>
-                   <button class='Bbtn'>BOOK NOW</button>
+                    <div>
+                        <form action="/favourite-list" method="POST">
+                            <input type="hidden" name="Id" value="<%= home.Id %>" />
+                            <button class="Button" type="submit">ADD TO FAVOURITES</button>
+                        </form>
+                    </div>
                </div>
            </li>
-           <% }); %>
        </ul> 
-    </main>
+           </main>
     <footer>
         <p>&copy; 2024 AIRBNB CLONE</p>
     </footer>
 </body>
-           </html>
+</html>
                

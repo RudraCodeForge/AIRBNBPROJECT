@@ -1,0 +1,62 @@
+
+<%- include('../partial/head') %>
+<body>
+    <%- include('../partial/navbar') %>
+    <section id="header">
+        <h1><%= Editing ? "EDIT " : "REGISTER "%> YOUR HOME IN AIRBNB</h1>
+    </section>
+    <section id="main">
+        <form id="addhome" action="<%= Editing ? '/host/EditHome' : '/host/sucess' %>" method="POST">
+            <input
+                type="hidden" 
+                name="Id"
+                value="<%= Editing ? Home.Id : '' %>"
+            >
+            <input 
+                type="text" 
+                name="Profile" 
+                value="<%= Editing ? Home.Image : ''%>"
+                placeholder="ENTER THE PROFILE-IMG LINK" 
+                required
+            >
+            <br/><br/>
+            <input 
+                type="text" 
+                name="Name" 
+                value="<%= Editing ? Home.Name : ''%>"
+                placeholder="ENTER YOUR HOME NAME" 
+                required
+            >
+            <br/><br/>
+            <input 
+                type="text" 
+                name="Location" 
+                value="<%= Editing ? Home.Location : ''%>"
+                placeholder="ENTER YOUR HOME LOCATION" 
+                required
+            >
+            <br/><br/>
+            <input 
+                type="number" 
+                name="Price" 
+                value="<%= Editing ? Home.Price : ''%>"
+                placeholder="ENTER YOUR HOME PRICE PER NIGHT" 
+                required
+            >
+            <br/><br/>
+            <input 
+                type="text" 
+                name="Ratings" 
+                value="<%= Editing ? Home.Ratings : ''%>"
+                placeholder="ENTER YOUR HOME RATINGS" 
+                required
+            >
+            <br/><br/>
+            <button type="submit"><%= Editing ? "EDIT HOME " : "ADD HOME"%></button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2024 Airbnb Clone</p>
+    </footer>
+</body>
+</html>

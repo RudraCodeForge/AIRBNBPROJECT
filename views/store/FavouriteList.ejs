@@ -1,0 +1,61 @@
+<%- include('../partial/head') %>
+<body>
+    
+    <%- include('../partial/navbar') %>
+    <section id="header">
+        <h1>
+            WELCOME TO AIRBNB FAVOURITES
+        </h1>
+    </section>
+    <main>
+        <ul>
+           <% FavouriteHomeDetails.forEach(home=>{ %>
+           <li class='HOMES'>
+               <div class='HOME'>
+                    <div class='images'>
+                        <img class='himg' src="<%= home.Image %>" alt="Home Image">
+                    </div>
+                    <p class='p1'>
+                        <%= home.Name %>
+                    </p>
+                    <div class='MAIN'>
+                        <div class='LEFT'>
+                            <p class='p2'>
+                                LOCATION
+                            </p>
+                            <p class='p3'>
+                                PRICE
+                            </p>
+                            <p class='p3'>
+                                RATINGS
+                            </p>
+                        </div>
+                        <div class='RIGHT'>    
+                            <p class='p2'>
+                                <i class="fa-solid fa-location-dot"></i> <%= home.Location %>
+                            </p>
+                            <p class='p3'>
+                                ₹<%= home.Price %>/Night
+                            </p>
+                            <p class='p3'>
+                                <i class="fa-solid fa-star"></i> <%= home.Ratings %>
+                            </p>
+                        </div>
+                    </div>
+                   <div class="btncon">
+                        <button class="edit">BOOK NOW</button>
+                        <form action="/remove-list/<%= home.Id %>" class="deleteform" method="POST">
+                            <button type="submit" class='delete'>REMOVE HOME</button>
+                        </form>
+                   </div>
+               </div>
+           </li>
+           <% }); %>
+       </ul> 
+    </main>
+    <footer>
+        <p>&copy; 2024 AIRBNB CLONE</p>
+    </footer>
+</body>
+           </html>
+               

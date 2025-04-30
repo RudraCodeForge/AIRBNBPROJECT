@@ -28,6 +28,15 @@
   text-decoration:none;
 }
 
+.Ahome,
+.Aaddhome,
+.Abookings,
+.Ahomelist,
+.Ahosthome,
+.Afavourite{
+  text-decoration:underline !important;
+}
+
 #header{
   letter-spacing:2px;
   font-family: "Noto Serif", serif;
@@ -35,7 +44,7 @@
   font-weight:bolder;
   background-color:#f54949;
   padding:30px 10px;
-  margin-top:40px;
+  margin-top:100px;
 }
 #search{
   margin: 20px 0;
@@ -110,10 +119,12 @@ main{
   text-align:right;
 }
 .Bbtn{
-  width:100%;
+  border-radius: 10px;
+  text-align:center;
+  width:40%;
+  font-weight:bold;
   padding:10px;
   font-family: "Almendra", serif;
-  font-weight:800;
   letter-spacing:2px;
   color:white;
   background-color:#f54949;
@@ -127,6 +138,34 @@ main{
 }
 .Bbtn:active{
   transform: scale(0.9);
+}
+.btncon{
+  width: 100%;
+  display:flex;
+  justify-content:space-around;
+  
+}
+.deleteform{
+  width:40%;
+  text-align:center;
+}
+.edit,
+.delete{
+  width:40%;
+  text-align: center;
+  text-decoration:none;
+  padding:10px;
+  font-family: "Almendra", serif;
+  font-weight:800;
+  font-size:15px;
+  letter-spacing:2px;
+  color:white;
+  background-color:#f54949;
+  transition:0.2s ease-in-out;
+}
+.delete{
+  width:100%;
+  
 }
 footer{
   background-color:black;
@@ -217,4 +256,16 @@ footer{
   color: white;
   border-radius:20px;
   transform: scale(0.5);
+}
+/*Home details page design*/
+.Button{
+  width:100%;
+  font-weight:bold;
+  color:white;
+  background-color:#f54949;
+  box-shadow: 5px 5px 10px grey;
+}
+.Button:hover{
+  background-color:white;
+  color:#f54949;
 }

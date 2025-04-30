@@ -4,9 +4,21 @@
     </div>
         
     <div id="link">
-        <a href='/'>HOME</a>
-        <a href='/host/add-home'>
+        <a class="<%= CurrentPage==='HOME' ? 'Ahome' : '' %> " href='/'>HOME</a>
+        <a class="<%= CurrentPage==='BOOKINGS' ? 'Abookings' : '' %> " href='/bookings'>
+            BOOKINGS
+        </a>
+        <a class="<%= CurrentPage==='FAVOURITE' ? 'Afavourite' : '' %> " href='/favourite-list'>
+            FAVOURITES
+        </a>
+        <a class="<%= CurrentPage==='HOMELIST' ? 'Ahomelist' : '' %> " href='/index'>
+            ALL-HOMES
+        </a>
+        <a class="<%= CurrentPage==='ADDHOME' ? 'Aaddhome' : '' %> " href='/host/add-home'>
             ADD-HOME
+        </a>
+        <a class="<%= CurrentPage==='HOSTHOME' ? 'Ahosthome' : '' %> " href='/host/Home'>
+            HostHome
         </a>
     </div>
 </section>
