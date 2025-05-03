@@ -49,8 +49,8 @@
                         </div>
                     </div>
                     <div class="btncon">
-                        <button class="edit" onclick="window.location.href='/host/EditHome/<%= home.Id %>?editing=true'">EDIT HOME</button>
-                        <form action="/host/DeleteHome/<%= home.Id %>" class="deleteform" method="POST">
+                        <button class="edit" onclick="window.location.href='/host/EditHome/<%= home._id %>?editing=true'">EDIT HOME</button>
+                        <form action="/host/DeleteHome/<%= home._id %>" class="deleteform" method="POST">
                             <button type="submit" class='delete'>DELETE HOME</button>
                         </form>
                     </div>

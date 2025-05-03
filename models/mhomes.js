@@ -5,64 +5,45 @@ const rootDir = require("../utils/pathUtil");
 const filePath = path.join(rootDir, "data", "home.json");
 const Favourite = require("./mfavourite");
 
+const {getDB} = require('../utils/databaseUtil');
+const { ObjectId } = require('mongodb');
+
 module.exports = class Home {
-  constructor(HouseImg,HouseName,HouseLocation,HousePrice,HouseRatings,Id)   {
+  constructor(HouseImg,HouseName,HouseLocation,HousePrice,HouseRatings,_id)   {
     this.Image = HouseImg;
     this.Name = HouseName;
     this.Location = HouseLocation;
     this.Price = HousePrice;
     this.Ratings = HouseRatings;
-    this.Id = Id;
+    if(_id){
+      this._id = _id;
+    }
   }
 
   save() {
-    
-    Home.fetchAll((REGISTEREDHOMES) => {
-      if(this.Id){
-        REGISTEREDHOMES = REGISTEREDHOMES.map(home=>
-          home.Id=== this.Id ?  this : home)
+    const db = getDB();
+    if(this._id){
+      const {_id,...rest}=this;
+      console.log("Home updated successfully")
+      return db.collection('homes').updateOne({_id: new ObjectId(String(this._id))},{$set: rest});
+    }
+    else{
+      return db.collection('homes').insertOne(this);
       }
-      else{
-        this.Id = Math.random().toString();
-        REGISTEREDHOMES.push(this);
-      }
-      
-      fs.writeFile(
-        filePath,
-        JSON.stringify(REGISTEREDHOMES),(err)=>{
-          console.log(`ERROR OCCUR IN FILE WRITING ${err}`)
-        }
-      );
-    });
   }
 
-  static fetchAll(callback) {
-    fs.readFile(filePath, (err, filedata) => {
-      if (!err) {
-        callback(JSON.parse(filedata));
-      } else {
-        console.log(`ERROR OCCUR IN FILE READING ${err}`);
-        callback([]);
-      }
-    });
+  static fetchAll() {
+    const db = getDB();
+    return db.collection('homes').find().toArray();
   }
   
-  static findById(HomeId,callback){
-    Home.fetchAll((HOMEFOUND)=>{
-      const Home = HOMEFOUND.find(home=>home.Id===HomeId);
-      callback(Home);
-    })
+  static findById(HomeId){
+    const db = getDB();
+    return db.collection('homes').findOne({_id: new ObjectId(String(HomeId))});
   }
 
-  static DeleteById(HomeId,callback){
-    Home.fetchAll((HOMEFOUND)=>{
-      const Homes = HOMEFOUND.filter(home=>home.Id !==HomeId);
-      Favourite.DeleteById(HomeId,(error)=>{
-        console.log(`ERROR OCCUR IN DELETING HOME FOR FAVOURITE LIST ${error}`)
-      })
-      fs.writeFile(
-        filePath,
-        JSON.stringify(Homes),callback);
-    })
+  static DeleteById(HomeId){
+    const db = getDB();
+    return db.collection('homes').deleteOne({_id: new ObjectId(String(HomeId))});
   }
 };

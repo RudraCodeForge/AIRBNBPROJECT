@@ -4,7 +4,7 @@ const Home = require("../models/mhomes");
 const Favourite = require("../models/mfavourite");
 
 exports.HOME = (req, res, next) => {
-           Home.fetchAll((REGISTEREDHOMES) => {
+           Home.fetchAll().then(REGISTEREDHOMES => {
                       res.render("store/Home", {
                                  pageTitle: "HOME",
                                  REGISTERHOME: REGISTEREDHOMES,
@@ -14,7 +14,7 @@ exports.HOME = (req, res, next) => {
 };
 
 exports.INDEX = (req, res, next) => {
-           Home.fetchAll((REGISTEREDHOMES) => {
+           Home.fetchAll().then(REGISTEREDHOMES => {
                       res.render("store/index", {
                                  pageTitle: "INDEX",
                                  REGISTERHOME: REGISTEREDHOMES,
@@ -58,20 +58,15 @@ exports.POSTFAVOURITELIST = (req, res, next) => {
 
 exports.HOMEDETAILS = (req, res, next) => {
            const HomeId = req.params.homeId;
-           Home.findById(HomeId, (home) => {
-                      if (!home) {
-                                 console.log("Home not found");
-
-                                 return res.redirect("/index");
-                      } else {
-                                 res.render("store/HomeDetails", {
-                                            pageTitle: "HOMEDETAILS",
-                                            home: home,
-                                            CurrentPage: "HOMEDETAILS",
-                                            HomeId: HomeId,
-                                 });
+           Home.findById(HomeId).then(home =>{
+                      if(!home){
+                                 console.log(`Home not found`);
+                                 res.redirect("/index");
                       }
-           });
+                      else{
+                                 res.render("store/HomeDetails",{home:home,pageTitle:"HOMEDETAILS",CurrentPage:"HOMEDETAILS"});
+                      }
+           })
 };
 
 exports.POSTREMOVE = (req,res,next)=>{

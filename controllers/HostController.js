@@ -3,7 +3,7 @@
 const Home = require("../models/mhomes");
 
 exports.HOSTHOME = (req, res, next) => {
-           Home.fetchAll((REGISTEREDHOMES) => {
+           Home.fetchAll().then(REGISTEREDHOMES => {
                       res.render("host/HostHomeList", {
                                  pageTitle: "HOSTHOME",
                                  REGISTERHOME: REGISTEREDHOMES,
@@ -33,7 +33,7 @@ exports.POSTADDHOME = (req, res, next) => {
 exports.HOSTEDITHOME = (req, res, next) => {
            const HomeId = req.params.HomeId;
            const editing = req.query.editing === "true";
-           Home.findById(HomeId, (Home) => {
+           Home.findById(HomeId).then(Home => {
                       if (!Home) {
                                  console.log("Home not found");
                                  return res.redirect("/host/Home")
@@ -51,13 +51,15 @@ exports.HOSTEDITHOME = (req, res, next) => {
 exports.POSTEDITHOME = (req,res,next)=>{
               const { Id, Profile, Name, Location, Price, Ratings } = req.body;
               const home = new Home(Profile, Name, Location, Price, Ratings,Id); // Create a new Home object with the updated data
-              home.save();
+              home.save().then(error =>{
+                         console.log(error);
+              });
               res.redirect("/host/Home")
 }
 
 exports.POSTDELETEHOME = (req,res,next)=>{
            const Id = req.params.HomeId;
-           Home.DeleteById(Id,(error)=>{
+           Home.DeleteById(Id).then(error=>{
                       if(error){
                                  console.log(`ERROR OCCUR IN FILE DELETING ${error}`);
                       }
